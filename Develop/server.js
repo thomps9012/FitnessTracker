@@ -56,10 +56,13 @@ app.post("/submit", ({ body }, res) => {
 
   //sets up a get request for retrieving all of our cardio data
 
+
   //sets up a get request for retrieving all of our resistance data
+
 
   //sets up a get request for retrieving all of our workout data
 
+  
 //setting up our port and console logging that the port is running correctly
 app.listen(PORT, () => {
   console.log(`App running on port ${PORT}!`);
