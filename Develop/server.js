@@ -21,7 +21,16 @@ app.use(express.json());
 app.use(express.static("public"));
 
 //ensuring that mongoose is connected to our local host
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/exercisedb", { useNewUrlParser: true });
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/populate", { useNewUrlParser: true });
+
+//creates our exercise database
+db.Exercise.create({ name: "Exercise History" })
+  .then(dbExercise => {
+    console.log(dbExercise);
+  })
+  .catch(({message}) => {
+    console.log(message);
+  });
 
 //sets up an app.post for a resistance workout
 app.post("/submit", ({ body }, res) => {
@@ -44,6 +53,12 @@ app.post("/submit", ({ body }, res) => {
         res.json(err);
       });
   });
+
+  //sets up a get request for retrieving all of our cardio data
+
+  //sets up a get request for retrieving all of our resistance data
+
+  //sets up a get request for retrieving all of our workout data
 
 //setting up our port and console logging that the port is running correctly
 app.listen(PORT, () => {
