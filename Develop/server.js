@@ -24,7 +24,7 @@ app.use(express.static("public"));
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/populate", { useNewUrlParser: true });
 
 //creates our exercise database
-db.Exercise.create({ name: "Exercise History" })
+Exercise.create({ name: "Exercise History" })
   .then(dbExercise => {
     console.log(dbExercise);
   })
