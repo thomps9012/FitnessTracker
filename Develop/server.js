@@ -10,6 +10,7 @@ const PORT = process.env.PORT || 3000;
 const Resistance = require("./models/resistance.js");
 const Cardio = require("./models/cardio.js");
 const Exercise = require("./models/Exercise.js");
+const db = require("./models");
 const app = express();
 
 
@@ -74,13 +75,37 @@ app.post("/submit", ({ body }, res) => {
 });
 
 //sets up a get request for retrieving all of our cardio data
-
+app.get("/Cardio", (req, res) => {
+  db.Cardio.find({})
+    .then(dbCardio => {
+      res.json(dbCardio);
+    })
+    .catch(err => {
+      res.json(err);
+    });
+});
 
 //sets up a get request for retrieving all of our resistance data
-
+app.get("/Resistance", (req, res) => {
+  db.Resistance.find({})
+    .then(dbResistance => {
+      res.json(dbResistance);
+    })
+    .catch(err => {
+      res.json(err);
+    });
+});
 
 //sets up a get request for retrieving all of our workout data
-
+app.get("/Exercise", (req, res) => {
+  db.Exercise.find({})
+    .then(dbExercise => {
+      res.json(dbExercise);
+    })
+    .catch(err => {
+      res.json(err);
+    });
+});
 
 //setting up our port and console logging that the port is running correctly
 app.listen(PORT, () => {
