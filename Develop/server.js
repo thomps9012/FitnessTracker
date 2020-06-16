@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 3000;
 const Resistance = require("./models/resistance.js");
 const Cardio = require("./models/cardio.js");
 const Exercise = require("./models/Exercise.js");
-const db = require("./models");
+// const db = require("./models");
 const app = express();
 
 
@@ -76,7 +76,7 @@ app.post("/submit", ({ body }, res) => {
 
 //sets up a get request for retrieving all of our cardio data
 app.get("/Cardio", (req, res) => {
-  db.Cardio.find({})
+  Cardio.find({})
     .then(dbCardio => {
       res.json(dbCardio);
     })
@@ -87,7 +87,7 @@ app.get("/Cardio", (req, res) => {
 
 //sets up a get request for retrieving all of our resistance data
 app.get("/Resistance", (req, res) => {
-  db.Resistance.find({})
+  Resistance.find({})
     .then(dbResistance => {
       res.json(dbResistance);
     })
@@ -97,8 +97,8 @@ app.get("/Resistance", (req, res) => {
 });
 
 //sets up a get request for retrieving all of our workout data
-app.get("/Exercise", (req, res) => {
-  db.Exercise.find({})
+app.get("/exercise", (req, res) => {
+  Exercise.find({})
     .then(dbExercise => {
       res.json(dbExercise);
     })
