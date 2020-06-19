@@ -1,9 +1,9 @@
-const Workout = require("../models/Workout.js");
+const db = require("../models");
 
 module.exports = function(app){
 //get route for retrieving workout data from the last workout
 app.get("/api/workouts", (req, res) => {
-    Workout.find()
+    db.Workout.find()
         .then(data => {
             res.json(data);
         })
@@ -14,7 +14,7 @@ app.get("/api/workouts", (req, res) => {
 
 //post route for creating a new resistance or cardio workout
 app.post("/api/workouts", (req, res) =>{
-    Workout.create({})
+    db.Workout.create({})
         .then(data => {
             res.json(data);
         })
@@ -25,7 +25,7 @@ app.post("/api/workouts", (req, res) =>{
 
 //put route for updating a workout
 app.put("/api/workouts/:id", ({ body, params}, res => {
-    Workout.findByIdAndUpdate(
+    db.Workout.findByIdAndUpdate(
         params.id,
         {
             $push: {exercises: body}},
@@ -42,7 +42,7 @@ app.put("/api/workouts/:id", ({ body, params}, res => {
 
 //get route for retrieving workout data from a specific range of dates
 app.get("/api/workouts/range", ({ query }, res) => {
-    Workout.find({ day: { $gte: query.start, $lte: query.end } })
+    db.Workout.find({ day: { $gte: query.start, $lte: query.end } })
         .then(data => {
             res.json(data);
         })
