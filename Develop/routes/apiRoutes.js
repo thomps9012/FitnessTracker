@@ -1,8 +1,6 @@
 const db = require("../models");
-const express = require("express"); 
-const app = express();
 
-module.exports = function (app) {
+module.exports =  (app) => {
     //get route for retrieving workout data from a range
     app.get("/api/workouts/range", (req, res) => {
 
