@@ -1,4 +1,6 @@
 const db = require("../models");
+const express = require("express"); 
+const app = express();
 
 module.exports = function (app) {
     //get route for retrieving workout data from a range
